@@ -1,11 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
     margin: 0px;
     padding: 0px;
-    font-family: "DM mono", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
+/* ------------------ CSS VARIABLES (Default: Light Theme) ------------------ */
+:root {
+    --bg-primary: #F7F7F7;
+    /* OFF-WHITE (Page Background) */
+    --bg-surface: #FFFFFF;
+    /* WHITE (Card/Nav Background) */
+    --text-primary: #1C1C1C;
+    /* BLACK (Text) */
+    --text-secondary: #757575;
+    /* GRAY (Subtitle Text - not explicitly used, but good practice) */
+    --color-accent: #00BCD4;
+    /* CYAN (CTA Button/Highlight) */
+    --color-accent-hover: #00A3AD;
+    /* Darker Cyan on hover */
+    --border-color: #E0E0E0;
+    /* LIGHT-GRAY (Borders) */
+    --text-on-accent: #FFFFFF;
+    /* WHITE (Text on buttons) */
+    --sepration-color: black;
+    /* Separator line color */
+    --box-shadow-color: #a8a5a5;
+    /* Light shadow */
+}
+
+/* ------------------ DARK THEME OVERRIDE ------------------ */
+/* When the 'dark-theme' class is added to the <body>, these variables will be used */
+body.dark-theme {
+    --bg-primary: #1A1A1A;
+    /* DARK-GRAY */
+    --bg-surface: #282828;
+    /* MID-GRAY */
+    --text-primary: #FFFFFF;
+    /* WHITE */
+    --text-secondary: #BDBDBD;
+    /* LIGHT-GRAY */
+    --color-accent: #4DD0E1;
+    /* LIGHT-CYAN */
+    --color-accent-hover: #3AA9B5;
+    /* Slightly darker light-cyan on hover */
+    --border-color: #3B3B3B;
+    /* DARKER-GRAY */
+    --text-on-accent: #1C1C1C;
+    /* BLACK */
+    --sepration-color: white;
+    /* Separator line color */
+    --box-shadow-color: #000000;
+    /* Dark shadow */
+}
+
+/* ------------------ BASE STYLING USING VARIABLES ------------------ */
 body {
-    background-color: #f1eee8;
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-bar {
@@ -15,21 +68,36 @@ body {
     margin: auto;
     height: 120px;
     align-items: center;
+    background-color: var(--bg-surface);
+    /* Use variable */
+    transition: background-color 0.3s ease;
+}
+
+.navbar-container {
+    background-color: var(--bg-surface);
+    /* Use variable */
+    transition: background-color 0.3s ease;
 }
 
 .header-logo {
-    color: rgb(0, 0, 0);
+    color: var(--text-primary);
+    /* Use variable */
     font-size: 50px;
     font-weight: 700;
     padding: 20px;
+    transition: color 0.3s ease;
 }
 
+/* Theme Changer Button - was .nav-items, now it's the CTA button style */
 .nav-items {
-    font-size: 20px;
+    font-size: 24px;
     padding: 10px 32px 10px 32px;
     transition: all ease 0.2s;
-    border: 4px solid #514c4c;
+    background-color: var(--color-accent);
+    /* Use variable */
     border-radius: 6px;
+    color: var(--text-on-accent);
+    /* Use variable */
     cursor: pointer;
 }
 
@@ -42,9 +110,11 @@ body {
 }
 
 .sepration {
-    background-color: black;
+    background-color: var(--sepration-color);
+    /* Use variable */
     display: block;
     height: 2px;
+    transition: background-color 0.3s ease;
 }
 
 .laptop-container {
@@ -59,7 +129,10 @@ body {
 }
 
 .header-laptop-container {
-    font-size: 40px;
+    font-size: 60px;
+    color: var(--text-primary);
+    /* Use variable */
+    transition: color 0.3s ease;
 }
 
 .laptop-section {
@@ -76,12 +149,55 @@ body {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    border: 3px solid #333;
+    border: 3px solid var(--border-color);
+    /* Use variable */
     border-radius: 20px;
     padding: 15px 20px 15px 20px;
     height: 500px;
-    background-color: white;
+    background-color: var(--bg-surface);
+    /* Use variable */
     overflow-y: scroll;
+    transition: all ease-in-out 0.3s;
+    /* Firefox Scrollbar Styling */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) var(--border-color);
+    /* (Thumb, Track) */
+}
+
+/* Webkit Scrollbar Styling (Chrome, Safari, Edge) */
+.laptop::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.laptop::-webkit-scrollbar-track {
+    background: var(--border-color);
+    /* Use variable */
+    border-radius: 10px;
+}
+
+.laptop::-webkit-scrollbar-thumb {
+    background-color: var(--color-accent);
+    /* Use variable */
+    border-radius: 10px;
+    border: 2px solid var(--bg-surface);
+    /* Use variable */
+}
+
+.laptop::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-accent-hover);
+    /* Use variable */
+}
+
+.laptop::-webkit-scrollbar-button {
+    display: none;
+    height: 0;
+    width: 0;
+}
+
+.laptop:hover {
+    box-shadow: 0px 0px 40px 10px var(--box-shadow-color);
+    /* Use variable */
 }
 
 .image img {
@@ -91,39 +207,31 @@ body {
 
 .name-laptop {
     font-size: 1.8rem;
-    font-weight: 1000;
+    font-weight: 600;
     padding: 0px 20px 0px 20px;
     margin-top: 20px;
+    color: var(--text-primary);
+    /* Use variable */
+    transition: color 0.3s ease;
 }
 
 .laptop-specs {
     margin-top: 20px;
     padding: 20px;
+    color: var(--text-primary);
+    /* Ensure specs text uses primary color */
+    transition: color 0.3s ease;
 }
 
-.ram {
-    font-weight: 100;
-    margin-top: 20px;
-}
-
-.ram p {
-    font-weight: 800;
-}
-
-.gpu {
-    font-weight: 100;
-    margin-top: 20px;
-}
-
-.gpu p {
-    font-weight: 800;
-}
-
+.ram,
+.gpu,
 .processor {
-    font-weight: 100;
+    font-weight: 300;
     margin-top: 20px;
 }
 
+.ram p,
+.gpu p,
 .processor p {
     font-weight: 800;
 }
@@ -135,17 +243,22 @@ body {
 
 .purchase-btn {
     padding: 10px 20px 10px 20px;
-    background: #333;
+    background: var(--color-accent);
+    /* Use variable */
     border-radius: 6px;
     cursor: pointer;
     margin-top: 20px;
-    color: white;
-
+    color: var(--text-on-accent);
+    /* Use variable */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .purchase-btn:hover {
-    background-color: rgba(0, 0, 0, 0.721);
+    background-color: var(--color-accent-hover);
+    /* Use variable */
 }
+
+/* MEDIA QUERIES (No changes, they are functional) */
 
 @media screen and (max-width : 1100px) {
 
@@ -154,7 +267,7 @@ body {
     }
 
     .nav-bar {
-        width: 95vw;
+        width: 90vw;
     }
 }
 
@@ -173,7 +286,7 @@ body {
 
     .image img {
         width: 180px;
-        margin: 440px 0px 0px 0px;
+        margin: 360px 0px 0px 0px;
     }
 
     .name-laptop {
@@ -183,9 +296,11 @@ body {
     .ram {
         font-size: 15px;
     }
+
     .processor {
         font-size: 15px;
     }
+
     .gpu {
         font-size: 15px;
     }

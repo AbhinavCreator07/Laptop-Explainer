@@ -1,3 +1,12 @@
+📌Updates:
+
+1. Dark/Light mode added.
+2. Responsive Design improved.
+3. New background-removed images added.
+4. Design Update.
+5. bug fixes.
+6. performance improvement.
+
 💻 Laptop Explainer
 
 Laptop Explainer is a simple, static HTML and CSS project that showcases a selection of popular laptops along with their key specifications and prices. It provides direct links to purchase each laptop from Flipkart.

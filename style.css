@@ -316,4 +316,8 @@ body {
     .nav-items {
         padding: 10px 22px 10px 22px;
     }
+
+    .price {
+        font-size: 20px;
+    }
 }
